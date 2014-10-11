@@ -1,2 +1,29 @@
 Files with example problems described in EuroSciPy 2014 proceedings article
 "Enhancing SfePy with Isogeometric Analysis".
+
+Assuming the problem description files are in the top level sfepy directory,
+the examples can be run and visualized as follows:
+
+- 2D Laplace equation by IGA::
+
+  python simple.py laplace_iga.py
+  python postproc.py ig_domain.vtk --wireframe -b \
+    -d'T,plot_warp_scalar,rel_scaling=1'
+
+- 2D Laplace equation by FEM::
+
+  python simple.py laplace_fem.py
+  python postproc.py fe_domain.vtk --wireframe -b \
+    -d'T,plot_warp_scalar,rel_scaling=1'
+
+- 2D Poisson equation by IGA, with volume source term in a subdomain::
+
+  python simple.py poisson_iga.py
+  python postproc.py ig_domain.vtk --wireframe -b \
+    -d'T,plot_warp_scalar,rel_scaling=1'
+
+- 2D elasticity by IGA::
+
+  python simple.py elasticity_iga.py
+  python postproc.py ig_domain_3d.vtk --wireframe -b \
+    -d 'u,plot_displacements,rel_scaling=1e1'
