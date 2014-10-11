@@ -2,6 +2,7 @@ filename_domain = 'ig_domain.iga'
 
 regions = {
     'Omega' : 'all',
+    'Omega_0' : 'vertices in (x > 1.5) & (y < 1.5)',
     'Gamma1' : ('vertices of set xi10', 'facet'),
     'Gamma2' : ('vertices of set xi11', 'facet'),
 }
@@ -20,14 +21,17 @@ ebcs = {
     'T2' : ('Gamma2', {'T.0' : -0.5}),
 }
 
-materials = {}
+materials = {
+    'm' : ({'f' : -2.0},),
+}
 
 integrals = {
     'i' : 3,
 }
 
 equations = {
-    'Temperature' : """dw_laplace.i.Omega(s, T) = 0"""
+    'Temperature' : """dw_laplace.i.Omega(s, T)
+                       = dw_volume_lvf.i.Omega_0(m.f, s)"""
 }
 
 solvers = {
@@ -36,9 +40,4 @@ solvers = {
         'i_max'      : 1,
         'eps_a'      : 1e-10,
     }),
-}
-
-options = {
-    'nls' : 'newton',
-    'ls' : 'ls',
 }

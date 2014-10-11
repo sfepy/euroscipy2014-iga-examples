@@ -2,7 +2,7 @@ import numpy as nm
 
 from sfepy.linalg import get_coors_in_ball
 
-filename_mesh = 'nurbs.mesh'
+filename_mesh = 'fe_domain.mesh'
 
 centre = nm.array([0.0, 0.0], nm.float64)
 
